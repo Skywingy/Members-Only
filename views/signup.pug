@@ -1,0 +1,56 @@
+extends layout
+
+block content
+  div.right
+    h1 Join Us
+    form.form(action="/signup" method="POST")
+      p.auth-alternative Already registered? 
+        a(href="signin") Log in
+        <br>
+        <br>
+      div
+        label(for="firstname") 
+        input#username(type="text" name="firstname" required="true" maxLength="20" placeholder="Firstname")
+        <br>
+          <br>
+        if (error)
+          p(style="color: red;") #{error}
+      div
+        label(for="lastname") 
+        input#username(type="text" name="lastname" required="true" maxLength="20" placeholder="Lastname")
+        <br>
+          <br>
+        if (error)
+          p(style="color: red;") #{error}
+      div
+        label(for="username") 
+        input#username(type="text" name="username" required="true" maxLength="20" placeholder="Username")
+        <br>
+          <br>
+        if (error)
+          p(style="color: red;") #{error}
+      div
+        label(for="email") 
+        input#username(type="email" name="email" required="true" maxLength="20" placeholder="E-mail")
+        <br>
+          <br>
+        if (error)
+          p(style="color: red;") #{error}
+      div
+        label(for="password")
+        input#password(type="password" name="password" required="true" placeholder="Password")
+        <br>
+          <br>
+      div
+        label(for="confirmPassword") 
+        input#confirmPassword(type="password" name="confirmPassword" required="true" placeholder="Confirm Password")
+        <br>
+          <br>
+        if (passwordConfirmationError)
+          p(style="color: red;") #{passwordConfirmationError}
+      input.but(type="submit" value="Join")
+
+    if errors 
+      ul
+        for error in errors
+          li!= error.msg

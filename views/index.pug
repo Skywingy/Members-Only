@@ -1,0 +1,44 @@
+extends layout
+
+block index
+  if(user)
+    a.create(href='/message' style="text-decoration: none")="Create a Message" 
+    h1 Board
+    h4 Hello, How's your day buddy...
+    p Welcome Mr. #{user.username}
+      if (user.member)
+        ul.card
+          each message in messages
+            li.cardie
+              h3 Title: #{message.title}
+              <br>
+              <br>
+              h4 Message: #{message.message}
+              <br>
+              |  (#{message.timeStamp})
+              <br>
+              <br>
+              |  (#{message.user})
+              <br>
+              <br>
+              <br>
+              if (user.admin)
+                a(href="/delete-message/"+message.id)
+                  button.create.haha(type="submit") Delete
+              <br>
+              <br>
+      else
+          ul
+          each message in messages
+            li
+              a() #{message.title}
+              <br>
+              <br>
+              |  (#{message.message})
+              <br>
+              <br>
+              if (user.admin)
+                  a(href="/delete-message/"+message.id) 
+                  button(type="submit") Delete
+              <br>
+              <br>

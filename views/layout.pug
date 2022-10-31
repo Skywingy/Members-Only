@@ -1,0 +1,47 @@
+doctype html
+html
+  head
+    title The Fight Club
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@200;500&family=Comfortaa:wght@500&family=Fira+Sans&family=Lato&family=Miss+Fajardose&family=Mrs+Saint+Delafield&family=Mukta:wght@300&family=PT+Sans:ital@1&family=Tajawal:wght@300&family=Titillium+Web&family=Ubuntu:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+  body
+    div.container
+      nav.navbar 
+        a(href="/").title
+          h1 The Fight Club
+        //- If User is NOT logged in
+        
+        if (!user)
+          ul.links 
+            a(href="/signin") 
+              li Log in
+            a(href="/signup")
+              li Sign up
+        //- If User IS logged in
+        else 
+          ul.links
+            a(href="/")  
+              li Message Board
+            a(href="/member") 
+              li Member
+            a(href="/admin")  
+              li Admin
+            a(href="/logout") 
+              li Log out
+    if (!user)
+      div.content
+        div.left
+          h1 Welcome To Fight Club
+          <br>
+          h4 The first rule of Fight Club is: you do not talk about Fight Club!
+          h4 The second rule of Fight Club is: you DO NOT talk about Fight Club!
+        block content
+block member
+block index
+block message
+block admin
+
+      
+    

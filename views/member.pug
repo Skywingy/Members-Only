@@ -1,0 +1,25 @@
+extends layout
+
+block member
+  
+  if (!user.member)
+    div.memberB
+        h1 Welcome Mr. #{user.username}
+        <br>
+        p You'are not a member yet
+        p Please enter this code #{user.code}
+        <br>
+                form.member-form(action="/member" method="POST")
+                  label(for="code")
+                  input#username(type="text" name="code" required="true" maxLength="20")
+                  button(type="submit") Enter
+    p= warning
+  else 
+    div.memberB
+      h3 Hey, buddy you'are already member
+      p You can do whatever you like      
+      p Go Message Board and Post about your recent fight  
+    if errors 
+            ul
+              for error in errors
+                li!= error.msg

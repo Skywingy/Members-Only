@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    div.right
+      h1 Please, Log in
+      <br>
+      <br>
+      form.form(action="/signin" method="POST")
+        div
+          label(for="username") 
+          input#username(type="text" name="username" required="true" maxLength="20" placeholder="Username")
+          <br>
+            <br>
+          if (error)
+            p(style="color: red;") #{error}
+        div
+          label(for="password")
+          input#password(type="password" name="password" required="true" placeholder="Password")
+          <br>
+            <br>
+        div
+          label(for="submit")
+          input.but(type="submit" value="Login")
+      
+      if err 
+        ul
+          for error in err
+            li!= error.msg

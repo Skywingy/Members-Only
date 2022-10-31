@@ -1,0 +1,22 @@
+extends layout 
+
+block message
+  div.msgF
+    form.msgs(action="/message" method="POST")
+      h2 Welcome Mr. #{user.username}
+      p What's on your mind? 
+      div.title-container
+        label(for="title") 
+        input#messageTitle(type="text" name="title" required="true" maxLength="50" placeholder="Title")
+        <br>
+        <br>
+      div.text-container
+        label(for="message")
+        input#messageText(type="text" name="message" required="true" placeholder="Message")
+        <br>
+        <br>
+        <br>
+      button.create.hehe(type="submit") Post
+
+    if (errors)
+      p #{errors}

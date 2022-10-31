@@ -1,0 +1,25 @@
+extends layout
+
+block admin
+  if (!user.admin)
+    div.memberB
+      h1 Become a Admin
+      <br>
+        h4 This could be little bit challenging and no hint or whatever
+        p You'are not admin yet
+        p Please enter "The Magic Word"
+        <br>
+          form.member-form(action="/admin" method="POST")
+            label(for="magicword")
+            input#username(type="text" name="magicword" required="true" maxLength="20")
+            button(type="submit") Enter
+        p= warning
+  else
+    div.memberB
+      h3 You are a god in these matrix
+      p You can create or delete everything
+      p See your fist power at Message Board
+    if errors 
+      ul
+        for error in errors
+          li!= error.msg
