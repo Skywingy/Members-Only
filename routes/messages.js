@@ -9,8 +9,6 @@ router.get("/", msg_controller.index);
 // POST request for creating message.
 router.post("/", msg_controller.enter);
 
-//Delete
-router.post("/", msg_controller.delete_message_post);
 
 
 

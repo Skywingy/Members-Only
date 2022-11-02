@@ -1,14 +1,15 @@
 extends layout 
 
-block content 
-  div.edit-container
-    div.form-container
-      form.auth-form(action="" method="POST")
-        div.form-input-container
-          div#messageText.delete-message-text= message.text
+block delete 
+  if(user)
+      form.deleteF(action="" method="POST")
         input#messageId(type="hidden", name="messageId", required="true", value=message._id)
-        button(type="submit") Delete Message
-
+        p Are you sure, you want to delete this post?
+        p Title: #{message.title}
+        p Message: #{message.message}
+        <br>
+        <br>
+        button.create(type="submit") Delete Message
       if errors 
         ul
           for error in errors

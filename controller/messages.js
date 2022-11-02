@@ -47,6 +47,7 @@ exports.delete_message_get = (req, res, next) => {
   async.parallel(
     {
       message: function (callback) {
+        console.log("end baina",req.params.id);
         Message.findById(req.params.id).exec(callback);
       },
     },
@@ -61,7 +62,7 @@ exports.delete_message_get = (req, res, next) => {
         return next(err);
       }
       res.render("delete", {
-        title: "Delete Message - Members Only",
+        title: "Delete Message",
         message: results.message,
         user: res.locals.currentUser,
       });
@@ -72,7 +73,7 @@ exports.delete_message_get = (req, res, next) => {
 exports.delete_message_post = (req, res, next) => {
   // Remove the message using the id from the database
   Message.findByIdAndRemove(req.body.messageId, function deleteMessage(err) {
-    console.log("end baina",req.body.messageId)
+    console.log("deleted ",req.body.messageId)
     if (err) return next(err);
     res.redirect("/");
   });

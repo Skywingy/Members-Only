@@ -7,8 +7,8 @@ const msg_controller = require('../controller/messages');
 router.get('/', index_controller.index);
 
 /// ------- DELETE A MESSAGE ------- ///
-router.get("/delete-message/:id", msg_controller.delete_message_get);
-router.post("/delete-message/:id", msg_controller.delete_message_post);
+router.get("/delete/:id", msg_controller.delete_message_get);
+router.post("/delete/:id", msg_controller.delete_message_post);
 
 
 module.exports = router;
